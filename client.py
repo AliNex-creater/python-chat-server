@@ -1,4 +1,5 @@
 import socket
+from datetime import datetime
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(("127.0.0.1", 5555))
@@ -6,13 +7,13 @@ client.connect(("127.0.0.1", 5555))
 name = input("Enter your name: ")
 
 while True:
-    message = input()
-    client.send(f"{name}: {message}".encode())
+    msg = input()
 
-with open("chatlog.txt", "a") as f:
-    f.write(message + "\n")
+    timestamp = datetime.now().strftime("%H:%M:%S")
+    message = f"[{timestamp}] {name}: {msg}"
 
-from datetime import datetime
+    client.send(message.encode())
 
-time = datetime.now().strftime("%H:%M:%S")
-message = f"[{time}] {name}: {msg}"
+    with open("chatlog.txt", "a") as f:
+        f.write(message + "\n")
+        

@@ -1,4 +1,5 @@
 import socket
+from datetime import datetime
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(("0.0.0.0", 5555))
@@ -11,14 +12,16 @@ print(f"Connected: {addr}")
 
 while True:
     message = client.recv(1024).decode()
+
     if not message:
         break
-    print(message)
 
-with open("chatlog.txt", "a") as f:
-    f.write(message + "\n")
+    timestamp = datetime.now().strftime("%H:%M:%S")
+    log_message = f"[{timestamp}] {message}"
 
-from datetime import datetime
+    print(log_message)
 
-time = datetime.now().strftime("%H:%M:%S")
-message = f"[{time}] {name}: {msg}"
+    with open("chatlog.txt", "a") as f:
+        f.write(log_message + "\n")
+
+client.close()
