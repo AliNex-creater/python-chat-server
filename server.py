@@ -14,3 +14,11 @@ while True:
     if not message:
         break
     print(message)
+
+with open("chatlog.txt", "a") as f:
+    f.write(message + "\n")
+
+from datetime import datetime
+
+time = datetime.now().strftime("%H:%M:%S")
+message = f"[{time}] {name}: {msg}"

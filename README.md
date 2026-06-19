@@ -1,22 +1,19 @@
-# python-chat-server# Python Chat Server
+# Python Chat Server
 
-A simple multi-client chat application built using Python sockets and threading.
+## Project Overview
+A simple chat application built using Python sockets.
 
 ## Features
-
-- Client-server architecture
-- Multiple users
+- Client-server communication
 - Real-time messaging
-- TCP communication
+- TCP socket programming
 
-## Technologies
-
+## Technologies Used
 - Python
 - Socket Programming
-- Multithreading
+- GitHub Codespaces
 
-## How to Run
-
-python server.py
-
-python client.py
+## Learning Outcomes
+- TCP/IP fundamentals
+- Client-server architecture
+- Network communication
